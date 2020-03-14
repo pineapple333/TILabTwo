@@ -50,15 +50,22 @@ namespace ConsoleApp1
             pupils = pupils.OrderByDescending(o => o.Age).ToList();
             PrintPupils(pupils);
 
-            //Console.WriteLine("For array groupping: ");
-            //n = getUserInput();
-            //List<int> my_list = new List<int>();
-            //Random r = new Random();
-            //foreach (int one in Enumerable.Range(0, n))
-            //    my_list.Add(r.Next(0,n));
+            //// group by average mark
+            //var results = from p in pupils
+            //              group p.Name by p.GetAverageMark() into g
+            //              select new { PersonId = g.Key, Cars = g.ToList() };
 
-            //int[] tmp_array = my_list.ToArray();
-            //List<List<int>> output = Grouper.Group(tmp_array);
+            //Console.WriteLine(results);
+
+            Console.WriteLine("For array groupping: ");
+            n = getUserInput();
+            List<int> my_list = new List<int>();
+            Random r = new Random();
+            foreach (int one in Enumerable.Range(0, n))
+                my_list.Add(r.Next(0, n));
+
+            int[] tmp_array = my_list.ToArray();
+            List<List<int>> output = Grouper.Group(tmp_array);
 
             Console.ReadLine();
         }
