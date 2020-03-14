@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Calculator.cs" />
     <Compile Include="Grouper.cs" />
+    <Compile Include="Models\ModelGenerator.cs" />
+    <Compile Include="Models\Pupil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Timer.cs" />
