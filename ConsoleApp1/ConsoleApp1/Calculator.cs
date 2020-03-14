@@ -26,7 +26,7 @@ namespace ConsoleApp1
 
         }
 
-        public int Fib(int i, Dictionary<int, int> hash)
+        private int Fib(int i, Dictionary<int, int> hash)
         {
             if (i <= 0)
                 return 0;
@@ -50,6 +50,20 @@ namespace ConsoleApp1
             if (n == 1)
                 return 1;
             return n * calcFactorial(n - 1);
+        }
+
+        public IEnumerable<uint> GetFibSeries(int n)
+        {
+            uint ord1 = 0, ord2 = 0, ord3 = 0;
+            IEnumerable<uint> FibSeries = Enumerable.Range(1, n).Select(a =>
+            {
+                ord1 = a == 1 ? 0 : ord2;
+                ord2 = a == 1 ? 1 : ord3;
+                ord3 = a == 1 ? 0 : ord1 + ord2;
+                return ord3;
+            });
+
+            return FibSeries;
         }
 
     }

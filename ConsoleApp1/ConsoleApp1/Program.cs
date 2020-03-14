@@ -10,25 +10,34 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int n = 10;
+            int n = 20;
+            int tmp;
             Calculator c = new Calculator();
-
-            Console.WriteLine(c.naiveCalcFib(n));
-            Console.WriteLine(c.hashFibCalc(n));
-
-            uint ord1 = 0, ord2 = 0, ord3 = 0;
-            IEnumerable<uint> FibSeries = Enumerable.Range(1, n).Select(a =>
             {
-                ord1 = a == 1 ? 0 : ord2;
-                ord2 = a == 1 ? 1 : ord3;
-                ord3 = a == 1 ? 0 : ord1 + ord2;
-                return ord3;
-            });
+                Timer timer = new Timer();
+                tmp = c.naiveCalcFib(n);
+                timer.Stop();
+            }
+            Console.WriteLine("Naive fibonacci: " + tmp);
+            {
+                Timer timer = new Timer();
+                tmp = c.hashFibCalc(n);
+                timer.Stop();
+            }
+            Console.WriteLine("Fibonacci with hash table: " + tmp);
 
-            foreach(int i in FibSeries)
+            Console.WriteLine("Fibonacci series:");
+            IEnumerable<uint> tmpFibSeries;
+            {
+                Timer timer;
+                tmpFibSeries = c.GetFibSeries(n);
+            }
+            foreach(int i in tmpFibSeries)
                 Console.Write(i + " ");
-            Console.WriteLine("\n" + c.calcFactorial(10));
-            Console.ReadKey();
+
+            Console.WriteLine("\nThe factorial of {0} = {1}", n, c.calcFactorial(n));
+
+            Console.ReadLine();
         }
     }
 }
