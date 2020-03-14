@@ -50,14 +50,20 @@ namespace ConsoleApp1
             pupils = pupils.OrderByDescending(o => o.Age).ToList();
             PrintPupils(pupils);
 
-            //// group by average mark
-            //var results = from p in pupils
-            //              group p.Name by p.GetAverageMark() into g
-            //              select new { PersonId = g.Key, Cars = g.ToList() };
+            Console.WriteLine("Group by average mark: ");
 
-            //Console.WriteLine(results);
+            var pupilGroups = from phone in pupils
+                              group phone by phone.AverageMark;
 
-            Console.WriteLine("For array groupping: ");
+            foreach (IGrouping<int, Pupil> g in pupilGroups)
+            {
+                Console.WriteLine(g.Key);
+                foreach (var t in g)
+                    Console.WriteLine("Name: " + t.Name + " age: " + t.Age);
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Separate odd and even: ");
             n = getUserInput();
             List<int> my_list = new List<int>();
             Random r = new Random();

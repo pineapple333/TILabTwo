@@ -59,7 +59,7 @@ namespace ConsoleApp1.Models
         {
             List<int> marks = new List<int>();
             foreach (int one in Enumerable.Range(0, n))
-                marks.Add(_rnd.Next(1, 5));
+                marks.Add(_rnd.Next(1, 6));
 
             return marks;
         }

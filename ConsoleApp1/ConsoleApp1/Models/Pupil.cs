@@ -22,6 +22,18 @@ namespace ConsoleApp1.Models
         public string Name { private set; get; }
         public List<int> Marks { private set; get; }
         public int Age { private set; get; }
+        public int AverageMark {
+            private set
+            {
+            }
+            get
+            {
+                int sum = 0;
+                foreach (int one in Marks)
+                    sum += one;
+                return sum / Marks.Count();
+            }
+        }
 
         public int GetAverageMark()
         {
@@ -34,12 +46,12 @@ namespace ConsoleApp1.Models
         public override string ToString()
         {
             string to_return = "";
-            to_return += Name + "\n";
-            string marks = "";
+            to_return +="Name: " + Name + "\n";
+            string marks = "Marks: ";
             foreach (int one in Marks)
                 marks += one + " ";
             to_return += marks + "\n";
-            to_return += Age + "\n";
+            to_return += "Age: " + Age + "\n";
             return to_return;
         }
     }
